@@ -1,0 +1,53 @@
+{
+  "name": "AffiliateWP - Leaderboard",
+  "version": "1.0.1",
+  "description": "Display an affiliate leaderboard on your website",
+  "homepage": "http://affiliatewp.com/",
+  "author": {
+    "name": "Pippin Williamson and Andrew Munro",
+    "email": "support@affiliatewp.com",
+    "url": "http://affiliatewp.com/"
+  },
+  "contributors": "FX Bénard <fx@fxbenard.com> ",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/affiliatewp/affiliatewp-leaderboard/"
+  },
+  "bugs": {
+    "url": "https://github.com/affiliatewp/affiliatewp-leaderboard/issues",
+    "email": "support@affiliatewp.com"
+  },
+  "license": "GPLv2+",
+  "private": true,
+  "directories": {
+    "js": "",
+    "sass": "",
+    "css": "",
+    "build": "./build",
+    "languages": "./languages"
+  },
+  "pot": {
+    "type": "wp-plugin",
+    "textdomain": "affiliatewp-leaderboard",
+    "src": "affiliatewp-leaderboard.php",
+    "header": {
+      "bugs": "http://affiliatewp.com/",
+      "team": "affiliateWP <support@affiliatewp.com> ",
+      "last_translator": "affiliateWP <support@affiliatewp.com>"
+    }
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-checktextdomain": "~1.0.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-newer": "^1.1.0",
+    "grunt-phpcs": "^0.4.0",
+    "grunt-potomo": "~3.2.0",
+    "grunt-text-replace": "^0.4.0",
+    "grunt-wp-i18n": "~0.5.1",
+    "load-grunt-config": "0.16.0",
+    "load-grunt-tasks": "~0.3.0"
+  }
+}
