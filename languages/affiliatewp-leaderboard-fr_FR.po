@@ -1,0 +1,85 @@
+# Copyright (C) 2015 Pippin Williamson and Andrew Munro
+# This file is distributed under the same license as the AffiliateWP - Leaderboard package.
+msgid ""
+msgstr ""
+"Project-Id-Version: AffiliateWP - Leaderboard 1.0.1\n"
+"Report-Msgid-Bugs-To: http://affiliatewp.com/\n"
+"POT-Creation-Date: 2015-06-03 16:55+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-06-03 17:02+0100\n"
+"Last-Translator: fxbenard | FxB <fx@fxbenard.com>\n"
+"Language-Team: fxbenard <fx@fxbenard.com>\n"
+"X-Generator: Poedit 1.8.1\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"Language: fr_FR\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: affiliatewp-leaderboard.php:87 affiliatewp-leaderboard.php:99
+msgid "Cheatin&#8217; huh?"
+msgstr "Alors on essaye de tricher&nbsp;?"
+
+#: affiliatewp-leaderboard.php:269
+msgid "No registered affiliates"
+msgstr "Aucun affilié enregistré"
+
+#: affiliatewp-leaderboard.php:305
+msgid "Get more add-ons for AffiliateWP"
+msgstr "Obtenez plus de modules pour AffiliateWP !"
+
+#: affiliatewp-leaderboard.php:305
+msgid "Get add-ons"
+msgstr "Obtenir des modules complémentaires"
+
+#: includes/class-activation.php:47
+msgid "This plugin"
+msgstr "Cette extension"
+
+#: includes/class-activation.php:82
+msgid " requires %sAffiliateWP%s. Please activate it to continue."
+msgstr " nécessite %sAffiliateWP%s. Veuillez l'activer pour continuer."
+
+#: includes/class-activation.php:85
+msgid " requires %sAffiliateWP%s. Please install it to continue."
+msgstr " nécessite %sAffiliateWP%s. Veuillez l'installer pour continuer."
+
+#: includes/class-widget.php:15 includes/class-widget.php:55
+msgid "Affiliate Leaderboard"
+msgstr "Affiliate Leaderboard"
+
+#: includes/class-widget.php:17
+msgid "Displays an affiliate leaderboard"
+msgstr "Affiche un classement des affiliés"
+
+#: includes/class-widget.php:67
+msgid "Title:"
+msgstr "Titre :"
+
+#: includes/class-widget.php:73
+msgid "Affiliates To Show:"
+msgstr "Affiliés à afficher :"
+
+#: includes/class-widget.php:80
+msgid "Show Referrals"
+msgstr "Afficher les références"
+
+#: includes/class-widget.php:86
+msgid "Show Visits"
+msgstr "Afficher les visites"
+
+#: includes/class-widget.php:92
+msgid "Show Earnings"
+msgstr "Afficher les revenus :"
+
+#: includes/class-widget.php:100
+msgid "Order By:"
+msgstr "Trier par :"
+
+#. Description of the plugin/theme
+msgid "Display an affiliate leaderboard on your website"
+msgstr "Afficher un classement d'affiliation sur votre site"
