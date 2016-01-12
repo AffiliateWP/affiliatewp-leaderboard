@@ -5,7 +5,7 @@
  * Description: Display an affiliate leaderboard on your website
  * Author: Pippin Williamson and Andrew Munro
  * Author URI: http://affiliatewp.com
- * Version: 1.0.1
+ * Version: 1.0.2
  * Text Domain: affiliatewp-leaderboard
  * Domain Path: languages
  *
@@ -61,7 +61,7 @@ final class AffiliateWP_Leaderboard {
 
 			self::$plugin_dir = plugin_dir_path( __FILE__ );
 			self::$plugin_url = plugin_dir_url( __FILE__ );
-			self::$version    = '1.0';
+			self::$version    = '1.0.2';
 
 			self::$instance->load_textdomain();
 			self::$instance->includes();
@@ -196,8 +196,8 @@ final class AffiliateWP_Leaderboard {
 	 */
 	public function show_leaderboard( $args = array() ) {
 
-		$defaults = apply_filters( 'affwp_leaderboard_defaults', 
-			array( 
+		$defaults = apply_filters( 'affwp_leaderboard_defaults',
+			array(
 				'number'  => isset( $args['number'] ) ? $args['number'] : 10,
 				'orderby' => isset( $args['orderby'] ) ? $args['orderby'] : 'referrals'
 			)
@@ -213,25 +213,25 @@ final class AffiliateWP_Leaderboard {
 
 		// show an affiliate's visits
 		$show_visits = isset( $args['visits'] ) && ( 'yes' == $args['visits'] || 'on' == $args['visits'] ) ? true : false;
-		
-		// get affiliates	
+
+		// get affiliates
 		$affiliates = affiliate_wp()->affiliates->get_affiliates( $defaults );
 
 		ob_start();
-		
+
 		if ( $affiliates ) : ?>
 
 		<ol class="affwp-leaderboard">
-		<?php foreach( $affiliates as $affiliate  ) : ?>	
-			<li><?php 
+		<?php foreach( $affiliates as $affiliate  ) : ?>
+			<li><?php
 
 				// affiliate name
-				echo affiliate_wp()->affiliates->get_affiliate_name( $affiliate->affiliate_id ); 
-				
-				$to_show = apply_filters( 'affwp_leaderboard_to_show', 
-					array( 
-						'referrals' => $show_referrals, 
-						'earnings'  => $show_earnings, 
+				echo affiliate_wp()->affiliates->get_affiliate_name( $affiliate->affiliate_id );
+
+				$to_show = apply_filters( 'affwp_leaderboard_to_show',
+					array(
+						'referrals' => $show_referrals,
+						'earnings'  => $show_earnings,
 						'visits'    => $show_visits
 					)
 				);
@@ -242,35 +242,35 @@ final class AffiliateWP_Leaderboard {
 					foreach ( $to_show as $key => $value ) {
 
 						if ( $value && $key == 'referrals' ) {
-							$output[] = absint( $affiliate->referrals ) . ' ' . $key;
-						} 
+							$output[] = absint( $affiliate->referrals ) . ' ' . __( 'referrals', 'affiliatewp-leaderboard' );
+						}
 
 						if ( $value && $key == 'earnings' ) {
-							$output[] = affwp_currency_filter( affwp_format_amount( $affiliate->earnings ) ) . ' ' . $key;
-						} 
+							$output[] = affwp_currency_filter( affwp_format_amount( $affiliate->earnings ) ) . ' ' . __( 'earnings', 'affiliatewp-leaderboard' );
+						}
 
 						if ( $value && $key == 'visits' ) {
-							$output[] = absint( $affiliate->visits ) . ' ' . $key;
-						} 
+							$output[] = absint( $affiliate->visits ) . ' ' . __( 'visits', 'affiliatewp-leaderboard' );
+						}
 
 					}
 				}
 
 				$output = implode( '&nbsp;&nbsp;<span class="divider">|</span>&nbsp;&nbsp;', $output );
-				
+
 				if ( $output ) {
 					echo '<p>' . $output . '</p>';
 				}
-				
+
 				?></li>
 		<?php endforeach; ?>
 		</ol>
 		<?php else : ?>
 			<?php _e( 'No registered affiliates', 'affiliatewp-leaderboard' ); ?>
 		<?php endif; ?>
-			
 
-		<?php 
+
+		<?php
 
 		$html = ob_get_clean();
 
@@ -286,9 +286,9 @@ final class AffiliateWP_Leaderboard {
 	public function css() {
 		?>
 		<style>.affwp-leaderboard p{font-size:80%;color:#999;}</style>
-	<?php 
+	<?php
 	}
-	
+
 
 	/**
 	 * Modify plugin metalinks

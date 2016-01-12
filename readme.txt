@@ -2,8 +2,8 @@
 Contributors: sumobi, mordauk
 Tags: AffiliateWP, affiliate, Pippin Williamson, leaderboard, Andrew Munro, mordauk, pippinsplugins, sumobi, ecommerce, e-commerce, e commerce, selling, membership, referrals, marketing
 Requires at least: 3.3
-Tested up to: 4.1
-Stable tag: 1.0.1
+Tested up to: 4.4
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,27 +34,27 @@ The `number` parameter can be used to control how many affiliates are shown in t
 The `referrals` parameter can be used to show an affiliate's referrals:
 
     [affiliate_leaderboard referrals="yes"]
-    
+
 The `earnings` parameter can be used to show an affiliate's earnings:
 
     [affiliate_leaderboard earnings="yes"]
-    
+
 The `visits` parameter can be used to show an affiliate's visits:
 
     [affiliate_leaderboard visits="yes"]
-    
+
 You can also list all 3 (referrals, earnings, visits) like this:
 
     [affiliate_leaderboard referrals="yes" earnings="yes" visits="yes"]
-    
+
 The `orderby` parameter can be used to order the leaderboard by either `referrals`, `earnings` or `visits`:
-    
+
     [affiliate_leaderboard orderby="referrals"]
-    
+
     [affiliate_leaderboard orderby="earnings"]
-        
+
     [affiliate_leaderboard orderby="visits"]
-   
+
 **What is AffiliateWP?**
 
 [AffiliateWP](http://affiliatewp.com/ "AffiliateWP") provides a complete affiliate management system for your WordPress website that seamlessly integrates with all major WordPress e-commerce and membership platforms. It aims to provide everything you need in a simple, clean, easy to use system that you will love to use.
@@ -77,6 +77,9 @@ OR you can just install it with WordPress by going to Plugins >> Add New >> and 
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 1.0.2 =
+* Fix: Set up missing text strings for translation
 
 = 1.0.1 =
 * Fix: changed default orderby from "earnings" to "referrals" when no shortcode parameters are used.
