@@ -3,8 +3,8 @@
  * Plugin Name: AffiliateWP - Leaderboard
  * Plugin URI: http://affiliatewp.com/addons/leaderboard/
  * Description: Display an affiliate leaderboard on your website
- * Author: Pippin Williamson and Andrew Munro
- * Author URI: http://affiliatewp.com
+ * Author: Sandhills Development, LLC
+ * Author URI: https://sandhillsdev.com
  * Version: 1.0.2
  * Text Domain: affiliatewp-leaderboard
  * Domain Path: languages
