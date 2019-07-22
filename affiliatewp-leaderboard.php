@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: AffiliateWP - Leaderboard
- * Plugin URI: http://affiliatewp.com/addons/leaderboard/
+ * Plugin URI: https://affiliatewp.com/add-ons/official-free/leaderboard/
  * Description: Display an affiliate leaderboard on your website
  * Author: Sandhills Development, LLC
  * Author URI: https://sandhillsdev.com
