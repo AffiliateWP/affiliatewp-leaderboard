@@ -215,7 +215,7 @@ final class AffiliateWP_Leaderboard {
 		$show_visits = isset( $args['visits'] ) && ( 'yes' == $args['visits'] || 'on' == $args['visits'] ) ? true : false;
 
 		// get affiliates
-		$affiliates = affiliate_wp()->affiliates->get_affiliates( $defaults );
+		$affiliates = apply_filters( 'affiliatewp_leaderboard_get_affiliates', affiliate_wp()->affiliates->get_affiliates( $defaults ), $args );
 
 		ob_start();
 
