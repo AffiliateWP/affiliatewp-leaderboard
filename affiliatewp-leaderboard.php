@@ -214,7 +214,14 @@ final class AffiliateWP_Leaderboard {
 		// show an affiliate's visits
 		$show_visits = isset( $args['visits'] ) && ( 'yes' == $args['visits'] || 'on' == $args['visits'] ) ? true : false;
 
-		// get affiliates
+		/**
+		 * Filters the affiliates returned from the arguments passed through the shortcode.
+		 *
+		 * @since 1.0.3
+		 *
+		 * @param array Array of affiliates.
+		 * @param array args Array of arguments passed through the shortcode.
+		 */
 		$affiliates = apply_filters( 'affiliatewp_leaderboard_get_affiliates', affiliate_wp()->affiliates->get_affiliates( $defaults ), $args );
 
 		ob_start();
