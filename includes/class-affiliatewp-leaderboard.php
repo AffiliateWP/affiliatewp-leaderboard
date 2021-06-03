@@ -30,22 +30,6 @@ final class AffiliateWP_Leaderboard {
 	private static $instance;
 
 	/**
-	 * Plugin directory.
-	 *
-	 * @since 0.1
-	 * @var   string $plugin_dir
-	 */
-	public static $plugin_dir;
-
-	/**
-	 * Plugin url.
-	 *
-	 * @since 0.1
-	 * @var   string $plugin_url
-	 */
-	public static $plugin_url;
-
-	/**
 	 * The version number of AffiliateWP
 	 *
 	 * @since 1.0
@@ -79,8 +63,6 @@ final class AffiliateWP_Leaderboard {
 			self::$instance = new AffiliateWP_Leaderboard;
 			self::$instance->file = $file;
 
-			self::$plugin_dir = plugin_dir_path( self::$instance->file );
-			self::$plugin_url = plugin_dir_url( self::$instance->file );
 			self::$version    = '1.0.2';
 
 			self::$instance->setup_constants();
@@ -190,7 +172,7 @@ final class AffiliateWP_Leaderboard {
 	 * @return      void
 	 */
 	private function includes() {
-		require_once self::$plugin_dir . 'includes/class-widget.php';
+		require_once AFFWP_LB_PLUGIN_DIR . 'includes/class-widget.php';
 	}
 
 	/**
