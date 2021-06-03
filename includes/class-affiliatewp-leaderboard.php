@@ -358,15 +358,5 @@ final class AffiliateWP_Leaderboard {
  * @return object The one true AffiliateWP_Leaderboard Instance
  */
 function affiliatewp_leaderboard_load() {
-    if ( ! class_exists( 'Affiliate_WP' ) ) {
-        if ( ! class_exists( 'AffiliateWP_Activation' ) ) {
-            require_once 'includes/class-activation.php';
-        }
-
-        $activation = new AffiliateWP_Activation( plugin_dir_path( __FILE__ ), basename( __FILE__ ) );
-        $activation = $activation->run();
-    } else {
-        return AffiliateWP_Leaderboard::instance();
-    }
+  return AffiliateWP_Leaderboard::instance();
 }
-add_action( 'plugins_loaded', 'affiliatewp_leaderboard_load', 100 );
