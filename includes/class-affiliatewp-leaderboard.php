@@ -9,7 +9,7 @@
  * @since       1.0.0
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
@@ -22,13 +22,28 @@ final class AffiliateWP_Leaderboard {
 	/** Singleton *************************************************************/
 
 	/**
-	 * @var AffiliateWP_Leaderboard The one true AffiliateWP_Leaderboard
+	 * Holds the instance
+	 *
 	 * @since 1.0
+	 * @var AffiliateWP_Leaderboard The one true AffiliateWP_Leaderboard
 	 */
 	private static $instance;
 
-	public static  $plugin_dir;
-	public static  $plugin_url;
+	/**
+	 * Plugin directory.
+	 *
+	 * @since 0.1
+	 * @var   string $plugin_dir
+	 */
+	public static $plugin_dir;
+
+	/**
+	 * Plugin url.
+	 *
+	 * @since 0.1
+	 * @var   string $plugin_url
+	 */
+	public static $plugin_url;
 
 	/**
 	 * The version number of AffiliateWP
@@ -54,7 +69,9 @@ final class AffiliateWP_Leaderboard {
 	 *
 	 * @since 1.0
 	 * @static
-	 * @staticvar array $instance
+	 * @static var array $instance
+	 *
+	 * @param string $file Main plugin file.
 	 * @return The one true AffiliateWP_Leaderboard
 	 */
 	public static function instance( $file = null ) {
@@ -87,7 +104,7 @@ final class AffiliateWP_Leaderboard {
 	 * @return void
 	 */
 	public function __clone() {
-		// Cloning instances of the class is forbidden
+		// Cloning instances of the class is forbidden.
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'affiliatewp-leaderboard' ), '1.0' );
 	}
 
@@ -99,7 +116,7 @@ final class AffiliateWP_Leaderboard {
 	 * @return void
 	 */
 	public function __wakeup() {
-		// Unserializing instances of the class is forbidden
+		// Unserializing instances of the class is forbidden.
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'affiliatewp-leaderboard' ), '1.0' );
 	}
 
@@ -141,26 +158,26 @@ final class AffiliateWP_Leaderboard {
 	 */
 	public function load_textdomain() {
 
-		// Set filter for plugin's languages directory
+		// Set filter for plugin's languages directory.
 		$lang_dir = dirname( plugin_basename( $this->file ) ) . '/languages/';
 		$lang_dir = apply_filters( 'affiliatewp_leaderboard_languages_directory', $lang_dir );
 
-		// Traditional WordPress plugin locale filter
-		$locale   = apply_filters( 'plugin_locale',  get_locale(), 'affiliatewp-leaderboard' );
+		// Traditional WordPress plugin locale filter.
+		$locale   = apply_filters( 'plugin_locale', get_locale(), 'affiliatewp-leaderboard' );
 		$mofile   = sprintf( '%1$s-%2$s.mo', 'affiliatewp-leaderboard', $locale );
 
-		// Setup paths to current locale file
+		// Setup paths to current locale file.
 		$mofile_local  = $lang_dir . $mofile;
 		$mofile_global = WP_LANG_DIR . '/affiliatewp-leaderboard/' . $mofile;
 
 		if ( file_exists( $mofile_global ) ) {
-			// Look in global /wp-content/languages/affiliatewp-leaderboard/ folder
+			// Look in global /wp-content/languages/affiliatewp-leaderboard/ folder.
 			load_textdomain( 'affiliatewp-leaderboard', $mofile_global );
 		} elseif ( file_exists( $mofile_local ) ) {
-			// Look in local /wp-content/plugins/affiliatewp-leaderboard/languages/ folder
+			// Look in local /wp-content/plugins/affiliatewp-leaderboard/languages/ folder.
 			load_textdomain( 'affiliatewp-leaderboard', $mofile_local );
 		} else {
-			// Load the default language files
+			// Load the default language files.
 			load_plugin_textdomain( 'affiliatewp-leaderboard', false, $lang_dir );
 		}
 	}
@@ -185,13 +202,13 @@ final class AffiliateWP_Leaderboard {
 	 */
 	private function hooks() {
 
-		// shortcode
+		// shortcode.
 		add_shortcode( 'affiliate_leaderboard', array( $this, 'affiliate_leaderboard' ) );
 
-		// css
+		// css.
 		add_action( 'wp_head', array( $this, 'css' ) );
 
-		// plugin meta
+		// plugin meta.
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_meta' ), null, 2 );
 
 	}
@@ -200,17 +217,19 @@ final class AffiliateWP_Leaderboard {
 	 * Affiliate leaderboard shortcode
 	 *
 	 * @since  1.0
+	 * @param array  $atts Shortcode attributes.
+	 * @param string $content Shortcode content.
 	 * @return string
 	 */
 	public function affiliate_leaderboard( $atts, $content = null ) {
 
 		shortcode_atts(
 			array(
-				'number'    => 10, // show 10 by default
+				'number'    => 10, // show 10 by default.
 				'referrals' => '',
 				'earnings'  => '',
 				'visits'    => '',
-				'orderby'   => 'referrals'
+				'orderby'   => 'referrals',
 			),
 			$atts,
 			'affiliate_leaderboard'
@@ -225,6 +244,8 @@ final class AffiliateWP_Leaderboard {
 	 * Get referrals
 	 *
 	 * @since  1.0
+	 *
+	 * @param array $args Shortcode attributes.
 	 * @return string
 	 */
 	public function show_leaderboard( $args = array() ) {
@@ -232,22 +253,22 @@ final class AffiliateWP_Leaderboard {
 		$defaults = apply_filters( 'affwp_leaderboard_defaults',
 			array(
 				'number'  => isset( $args['number'] ) ? $args['number'] : 10,
-				'orderby' => isset( $args['orderby'] ) ? $args['orderby'] : 'referrals'
+				'orderby' => isset( $args['orderby'] ) ? $args['orderby'] : 'referrals',
 			)
 		);
 
 		$args = wp_parse_args( $args, $defaults );
 
-		// show an affiliate's earnings
+		// show an affiliate's earnings.
 		$show_earnings = isset( $args['earnings'] ) && ( 'yes' == $args['earnings'] || 'on' == $args['earnings'] ) ? true : false;
 
-		// show an affiliate's referrals
+		// show an affiliate's referrals.
 		$show_referrals = isset( $args['referrals'] ) && ( 'yes' == $args['referrals'] || 'on' == $args['referrals'] ) ? true : false;
 
-		// show an affiliate's visits
+		// show an affiliate's visits.
 		$show_visits = isset( $args['visits'] ) && ( 'yes' == $args['visits'] || 'on' == $args['visits'] ) ? true : false;
 
-		// get affiliates
+		// get affiliates.
 		$affiliates = affiliate_wp()->affiliates->get_affiliates( $defaults );
 
 		ob_start();
@@ -256,16 +277,17 @@ final class AffiliateWP_Leaderboard {
 
 		<ol class="affwp-leaderboard">
 		<?php foreach( $affiliates as $affiliate  ) : ?>
-			<li><?php
-
-				// affiliate name
+			<li>
+			<?php
+				// affiliate name.
 				echo affiliate_wp()->affiliates->get_affiliate_name( $affiliate->affiliate_id );
 
-				$to_show = apply_filters( 'affwp_leaderboard_to_show',
+				$to_show = apply_filters(
+					'affwp_leaderboard_to_show',
 					array(
 						'referrals' => $show_referrals,
 						'earnings'  => $show_earnings,
-						'visits'    => $show_visits
+						'visits'    => $show_visits,
 					)
 				);
 
@@ -274,15 +296,15 @@ final class AffiliateWP_Leaderboard {
 				if ( $to_show ) {
 					foreach ( $to_show as $key => $value ) {
 
-						if ( $value && $key == 'referrals' ) {
+						if ( $value && 'referrals' === $key ) {
 							$output[] = absint( $affiliate->referrals ) . ' ' . __( 'referrals', 'affiliatewp-leaderboard' );
 						}
 
-						if ( $value && $key == 'earnings' ) {
+						if ( $value && 'earnings' === $key ) {
 							$output[] = affwp_currency_filter( affwp_format_amount( $affiliate->earnings ) ) . ' ' . __( 'earnings', 'affiliatewp-leaderboard' );
 						}
 
-						if ( $value && $key == 'visits' ) {
+						if ( $value && 'visits' === $key ) {
 							$output[] = absint( $affiliate->visits ) . ' ' . __( 'visits', 'affiliatewp-leaderboard' );
 						}
 
@@ -314,12 +336,12 @@ final class AffiliateWP_Leaderboard {
 	 * CSS styling
 	 *
 	 * @since  1.0
-	 * @return string
+	 * @return void
 	 */
 	public function css() {
 		?>
 		<style>.affwp-leaderboard p{font-size:80%;color:#999;}</style>
-	<?php
+		<?php
 	}
 
 
@@ -333,15 +355,15 @@ final class AffiliateWP_Leaderboard {
 	 * @return      array $links The modified links array
 	 */
 	public function plugin_meta( $links, $file ) {
-	    if ( $file == plugin_basename( $this->file ) ) {
-	        $plugins_link = array(
-	            '<a title="' . __( 'Get more add-ons for AffiliateWP', 'affiliatewp-leaderboard' ) . '" href="http://affiliatewp.com/addons/" target="_blank">' . __( 'Get add-ons', 'affiliatewp-leaderboard' ) . '</a>'
-	        );
+		if ( plugin_basename( $this->file ) === $file ) {
+				$plugins_link = array(
+						'<a title="' . __( 'Get more add-ons for AffiliateWP', 'affiliatewp-leaderboard' ) . '" href="http://affiliatewp.com/addons/" target="_blank">' . __( 'Get add-ons', 'affiliatewp-leaderboard' ) . '</a>',
+				);
 
-	        $links = array_merge( $links, $plugins_link );
-	    }
+				$links = array_merge( $links, $plugins_link );
+		}
 
-	    return $links;
+		return $links;
 	}
 }
 
@@ -358,5 +380,5 @@ final class AffiliateWP_Leaderboard {
  * @return object The one true AffiliateWP_Leaderboard Instance
  */
 function affiliatewp_leaderboard_load() {
-  return AffiliateWP_Leaderboard::instance();
+	return AffiliateWP_Leaderboard::instance();
 }
