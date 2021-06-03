@@ -29,7 +29,22 @@ final class AffiliateWP_Leaderboard {
 
 	public static  $plugin_dir;
 	public static  $plugin_url;
+
+	/**
+	 * The version number of AffiliateWP
+	 *
+	 * @since 1.0
+	 * @var   string
+	 */
 	private static $version;
+
+	/**
+	 * Main plugin file.
+	 *
+	 * @since 1.0.0
+	 * @var   string
+	 */
+	private $file = '';
 
 	/**
 	 * Main AffiliateWP_Leaderboard Instance
@@ -42,14 +57,16 @@ final class AffiliateWP_Leaderboard {
 	 * @staticvar array $instance
 	 * @return The one true AffiliateWP_Leaderboard
 	 */
-	public static function instance() {
+	public static function instance( $file = null ) {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof AffiliateWP_Leaderboard ) ) {
 			self::$instance = new AffiliateWP_Leaderboard;
+			self::$instance->file = $file;
 
-			self::$plugin_dir = plugin_dir_path( __FILE__ );
-			self::$plugin_url = plugin_dir_url( __FILE__ );
+			self::$plugin_dir = plugin_dir_path( self::$instance->file );
+			self::$plugin_url = plugin_dir_url( self::$instance->file );
 			self::$version    = '1.0.2';
 
+			self::$instance->setup_constants();
 			self::$instance->load_textdomain();
 			self::$instance->includes();
 			self::$instance->hooks();
@@ -87,6 +104,35 @@ final class AffiliateWP_Leaderboard {
 	}
 
 	/**
+	 * Setup plugin constants.
+	 *
+	 * @access private
+	 * @since 1.2
+	 * @return void
+	 */
+	private function setup_constants() {
+		// Plugin version.
+		if ( ! defined( 'AFFWP_LB_VERSION' ) ) {
+			define( 'AFFWP_LB_VERSION', $this->version );
+		}
+
+		// Plugin Folder Path.
+		if ( ! defined( 'AFFWP_LB_PLUGIN_DIR' ) ) {
+			define( 'AFFWP_LB_PLUGIN_DIR', plugin_dir_path( $this->file ) );
+		}
+
+		// Plugin Folder URL.
+		if ( ! defined( 'AFFWP_LB_PLUGIN_URL' ) ) {
+			define( 'AFFWP_LB_PLUGIN_URL', plugin_dir_url( $this->file ) );
+		}
+
+		// Plugin Root File.
+		if ( ! defined( 'AFFWP_LB_PLUGIN_FILE' ) ) {
+			define( 'AFFWP_LB_PLUGIN_FILE', $this->file );
+		}
+	}
+
+	/**
 	 * Loads the plugin language files
 	 *
 	 * @access public
@@ -96,7 +142,7 @@ final class AffiliateWP_Leaderboard {
 	public function load_textdomain() {
 
 		// Set filter for plugin's languages directory
-		$lang_dir = dirname( plugin_basename( __FILE__ ) ) . '/languages/';
+		$lang_dir = dirname( plugin_basename( $this->file ) ) . '/languages/';
 		$lang_dir = apply_filters( 'affiliatewp_leaderboard_languages_directory', $lang_dir );
 
 		// Traditional WordPress plugin locale filter
@@ -287,7 +333,7 @@ final class AffiliateWP_Leaderboard {
 	 * @return      array $links The modified links array
 	 */
 	public function plugin_meta( $links, $file ) {
-	    if ( $file == plugin_basename( __FILE__ ) ) {
+	    if ( $file == plugin_basename( $this->file ) ) {
 	        $plugins_link = array(
 	            '<a title="' . __( 'Get more add-ons for AffiliateWP', 'affiliatewp-leaderboard' ) . '" href="http://affiliatewp.com/addons/" target="_blank">' . __( 'Get add-ons', 'affiliatewp-leaderboard' ) . '</a>'
 	        );
