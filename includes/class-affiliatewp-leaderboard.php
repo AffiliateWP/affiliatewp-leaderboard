@@ -130,7 +130,7 @@ final class AffiliateWP_Leaderboard {
 	private function setup_constants() {
 		// Plugin version.
 		if ( ! defined( 'AFFWP_LB_VERSION' ) ) {
-			define( 'AFFWP_LB_VERSION', $this->version );
+			define( 'AFFWP_LB_VERSION', self::$version );
 		}
 
 		// Plugin Folder Path.
