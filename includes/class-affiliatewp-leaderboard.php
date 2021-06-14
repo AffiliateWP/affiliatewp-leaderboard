@@ -63,7 +63,7 @@ final class AffiliateWP_Leaderboard {
 			self::$instance = new AffiliateWP_Leaderboard;
 			self::$instance->file = $file;
 
-			self::$version    = '1.0.2';
+			self::$version    = '1.1';
 
 			self::$instance->setup_constants();
 			self::$instance->load_textdomain();

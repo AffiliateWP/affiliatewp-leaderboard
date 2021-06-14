@@ -5,7 +5,7 @@
  * Description: Display an affiliate leaderboard on your website
  * Author: Sandhills Development, LLC
  * Author URI: https://sandhillsdev.com
- * Version: 1.0.2
+ * Version: 1.1
  * Text Domain: affiliatewp-leaderboard
  * Domain Path: languages
  *
