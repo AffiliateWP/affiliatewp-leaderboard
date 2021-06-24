@@ -35,7 +35,7 @@ final class AffiliateWP_Leaderboard {
 	 * @since 1.0
 	 * @var   string
 	 */
-	private static $version;
+	private $version = '1.1';
 
 	/**
 	 * Main plugin file.
@@ -62,8 +62,6 @@ final class AffiliateWP_Leaderboard {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof AffiliateWP_Leaderboard ) ) {
 			self::$instance = new AffiliateWP_Leaderboard;
 			self::$instance->file = $file;
-
-			self::$version    = '1.1';
 
 			self::$instance->setup_constants();
 			self::$instance->load_textdomain();
@@ -112,7 +110,7 @@ final class AffiliateWP_Leaderboard {
 	private function setup_constants() {
 		// Plugin version.
 		if ( ! defined( 'AFFWP_LB_VERSION' ) ) {
-			define( 'AFFWP_LB_VERSION', self::$version );
+			define( 'AFFWP_LB_VERSION', $this->version );
 		}
 
 		// Plugin Folder Path.
