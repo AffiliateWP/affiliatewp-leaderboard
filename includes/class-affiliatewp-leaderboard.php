@@ -40,7 +40,7 @@ final class AffiliateWP_Leaderboard {
 	/**
 	 * Main plugin file.
 	 *
-	 * @since 1.0.0
+	 * @since 1.1
 	 * @var   string
 	 */
 	private $file = '';
